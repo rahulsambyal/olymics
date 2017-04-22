@@ -1,0 +1,16 @@
+1. Write a Hive program to find the number of medals won by each country in swimming.
+create table olymics(athelete string, age int, country string,year int, closing_date timestamp, sport string, gold int, silver int,bronze int,total int) row format delimited fields terminated by '\t' stored as textfile;
+
+load data local inpath '/home/jayant/Downloads/olympix_data.csv' into table olymics;
+
+select country, count(total) from olymics group by country;
+
+
+2. Write a Hive program to find the number of medals that India won year wise.
+select year,count(total) from olymics where country ='India' group by year order by year;
+
+3. Write a Hive Program to find the total number of medals each country won.
+select country,count(total) from olymics group by country;
+
+4. Write a Hive program to find the number of gold medals each country won.
+select country,count(gold) from olymics group by country;
